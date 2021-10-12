@@ -45,10 +45,11 @@ function App() {
   };
 
   const BlogTile = ({ data }) => {
+    const { title, intro } = data;
     return (
       <div style={styles.tileDiv}>
-        <h2 style={styles.tileHeader}>{data.title}</h2>
-        <p style={styles.tileIntro}>{textTrim(data.intro)}</p>
+        <h2 style={styles.tileHeader}>{title}</h2>
+        <p style={styles.tileIntro}>{textTrim(intro)}</p>
       </div>
     );
   };
@@ -56,9 +57,9 @@ function App() {
   return (
     <div style={styles.mainDiv}>
       <h1 style={styles.mainHeader}>ClickbaitApp</h1>
-      {posts.map((post) => {
-        return <BlogTile key={post.id} data={post} />;
-      })}
+      {posts.map((post) => (
+        <BlogTile key={post.id} data={post} />
+      ))}
     </div>
   );
 }
